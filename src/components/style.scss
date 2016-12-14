@@ -1,0 +1,46 @@
+.react-number-keyboard{
+  color:#000;
+  >.bd{
+    height: 200px;
+    width:100%;
+    overflow: hidden;
+    >.wrapper{
+      margin-right: -1px;
+      margin-top: -1px;
+      >.cell{
+        position: relative;
+        box-sizing: border-box;;
+        font:28px/50px "Helvetica neue", Verdana, Geneva, sans-serif;
+        height: 50px;
+        text-align: center;
+        background: #FFF;
+        color: #000;
+        float: left;
+        width:33.33%;
+
+        border-bottom: 1px solid #b3b3b3;
+        border-right: 1px solid #b3b3b3;
+
+        >img{
+          position: absolute;
+          width:30px;
+          left:50%;
+          top:50%;
+          transform: translate(-50%,-50%);
+        }
+
+        &:active{
+          background: lighten(#D1D5DA,10%);
+        }
+
+
+        &[data-theme=gray]{
+          background: #D1D5DA;
+          &:active{
+            background: darken(#D1D5DA,10%);
+          }
+        }
+      }
+    }
+  }
+}
