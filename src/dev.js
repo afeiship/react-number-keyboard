@@ -13,6 +13,8 @@ class App extends React.Component{
     }else{
       this._list.push(inItem);
     }
+
+    this.showSum();
   }
 
   showSum(){
@@ -22,7 +24,7 @@ class App extends React.Component{
     });
     console.log(sum);
   }
-  
+
   render(){
     return (
       <div className="hello-react-number-keyboard">
