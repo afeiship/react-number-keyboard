@@ -28,7 +28,7 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-number-keyboard">
-        <ReactNumberKeyboard keyItemClick={this.keyItemClick.bind(this)} />
+        <ReactNumberKeyboard onItemClick={this.keyItemClick.bind(this)} />
       </div>
     );
   }
