@@ -7,13 +7,8 @@ class App extends React.Component{
     super(props);
     this._list = [];
   }
-  keyItemClick(inItem){
-    if(inItem.action == 'delete'){
-      this._list.pop();
-    }else{
-      this._list.push(inItem);
-    }
-
+  keyItemClick({item,data}){
+    this._list = data;
     this.showSum();
   }
 

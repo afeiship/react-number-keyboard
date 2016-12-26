@@ -1,5 +1,6 @@
 import './style.scss';
 import classNames from 'classnames';
+import noop from 'noop';
 
 export default class extends React.Component{
   static propTypes = {
@@ -9,9 +10,7 @@ export default class extends React.Component{
   };
 
   static defaultProps = {
-    keyItemClick:function(inItem){
-      //customize your action!
-    },
+    onItemClick:noop,
     keyMapList:[
       {
         content:'1',
@@ -66,13 +65,27 @@ export default class extends React.Component{
     ]
   };
 
+  constructor(props){
+  	super(props);
+  	this.state = {
+      data:[]
+    };
+  }
+
+  _onItemClick(inItem){
+    var data = this.state.data;
+    inItem.action == 'delete' ? data.pop() : data.push(inItem);
+    this.setState({data});
+    this.props.onItemClick({item:inItem,data});
+  }
+
   render(){
     return (
       <div className={classNames('react-number-keyboard',this.props.cssClass)}>
         <div className="bd">
           <div className="wrapper">
             {this.props.keyMapList.map(function(item,index){
-              return <div onClick={this.props.onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></div>
+              return <div onClick={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></div>
             }.bind(this))}
           </div>
         </div>
