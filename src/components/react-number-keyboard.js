@@ -5,7 +5,7 @@ export default class extends React.Component{
   static propTypes = {
     cssClass:React.PropTypes.string,
     keyMapList:React.PropTypes.array,
-    keyItemClick:React.PropTypes.func
+    onItemClick:React.PropTypes.func
   };
 
   static defaultProps = {
@@ -72,7 +72,7 @@ export default class extends React.Component{
         <div className="bd">
           <div className="wrapper">
             {this.props.keyMapList.map(function(item,index){
-              return <div onClick={this.props.keyItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></div>
+              return <div onClick={this.props.onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></div>
             }.bind(this))}
           </div>
         </div>
