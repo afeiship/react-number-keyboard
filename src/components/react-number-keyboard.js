@@ -85,7 +85,7 @@ export default class extends React.Component{
         <div className="bd">
           <div className="wrapper">
             {this.props.keyMapList.map(function(item,index){
-              return <div onClick={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></div>
+              return <button onClick={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></button>
             }.bind(this))}
           </div>
         </div>
