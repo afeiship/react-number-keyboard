@@ -1,7 +1,8 @@
 .react-number-keyboard{
   color:#000;
+  font-size:10px;
   >.bd{
-    height: 200px;
+    height: 20em;
     width:100%;
     overflow: hidden;
     >.wrapper{
@@ -11,9 +12,9 @@
       overflow: hidden;
       >.cell{
         position: relative;
-        box-sizing: border-box;;
-        font:28px/50px "Helvetica neue", Verdana, Geneva, sans-serif;
-        height: 50px;
+        box-sizing: border-box;
+        font:2.5em/1.2 "Helvetica neue", Verdana, Geneva, sans-serif;
+        height: 2em;
         text-align: center;
         background: #FFF;
         color: #000;
