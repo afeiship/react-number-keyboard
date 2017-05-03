@@ -1,69 +1,21 @@
 import './style.scss';
-import React from 'react';
+import React,{PureComponent,PropTypes} from 'react';
 import classNames from 'classnames';
 import noop from 'noop';
+import {items} from './const';
 
-export default class extends React.Component{
+export default class extends PureComponent{
   static propTypes = {
-    cssClass:React.PropTypes.string,
-    keyMapList:React.PropTypes.array,
-    onItemClick:React.PropTypes.func
+    className:PropTypes.string,
+    items:PropTypes.array,
+    onItemClick:PropTypes.func,
+    onChange:PropTypes.func
   };
 
   static defaultProps = {
     onItemClick:noop,
-    keyMapList:[
-      {
-        content:'1',
-        action:'value'
-      },
-      {
-        content:'2',
-        action:'value'
-      },
-      {
-        content:'3',
-        action:'value'
-      },
-      {
-        content:'4',
-        action:'value'
-      },
-      {
-        content:'5',
-        action:'value'
-      },
-      {
-        content:'6',
-        action:'value'
-      },
-      {
-        content:'7',
-        action:'value'
-      },
-      {
-        content:'8',
-        action:'value'
-      },
-      {
-        content:'9',
-        action:'value'
-      },
-      {
-        content:'00',
-        action:'value',
-        theme:'gray'
-      },
-      {
-        content:'0',
-        action:'value'
-      },
-      {
-        content:'<img src="http://w.weipaitang.com/res/img/backspace.png" />',
-        action:'delete',
-        theme:'gray'
-      }
-    ]
+    onChange:noop,
+    items
   };
 
   constructor(props){
@@ -74,20 +26,24 @@ export default class extends React.Component{
   }
 
   _onItemClick(inItem){
-    var data = this.state.data;
+    const {onItemClick,onChange} = this.props;
+    let data = this.state.data;
     inItem.action == 'delete' ? data.pop() : data.push(inItem);
     this.setState({data});
-    this.props.onItemClick({item:inItem,data});
+    onItemClick({item:inItem,data});
+    onChange({ target:{ value:data } });
   }
 
   render(){
     return (
-      <div className={classNames('react-number-keyboard',this.props.cssClass)}>
+      <div className={classNames('react-number-keyboard',this.props.className)}>
         <div className="bd">
           <div className="wrapper">
-            {this.props.keyMapList.map(function(item,index){
-              return <button onClick={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></button>
-            }.bind(this))}
+            {this.props.items.map((item,index) => {
+              return (
+                <button onClick={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></button>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -20,10 +20,15 @@ class App extends React.Component{
     console.log(sum);
   }
 
+  _change =(e) =>{
+    const {value} = e.target;
+    console.log(value);
+  };
+
   render(){
     return (
       <div className="hello-react-number-keyboard">
-        <ReactNumberKeyboard onItemClick={this.keyItemClick.bind(this)} />
+        <ReactNumberKeyboard onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
       </div>
     );
   }

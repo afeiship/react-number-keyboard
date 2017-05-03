@@ -11,8 +11,10 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
 var externals = process.env.NODE_ENV === 'production' ? {
   react: 'react',
+  noop: 'noop',
   classnames: 'classnames',
-  'react-dom': 'react-dom'
+  'react-dom': 'react-dom',
+  'react-prop-types': 'react-prop-types',
 } : {};
 
 module.exports = {
