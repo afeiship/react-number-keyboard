@@ -3,12 +3,15 @@ import ReactNumberKeyboard from './main';
 
 
 class App extends React.Component{
+  state = {
+    value:[]
+  };
   constructor(props){
     super(props);
     this._list = [];
   }
-  keyItemClick({item,data}){
-    this._list = data;
+  keyItemClick({item,value}){
+    this._list = value;
     this.showSum();
   }
 
@@ -25,10 +28,15 @@ class App extends React.Component{
     console.log(value);
   };
 
+  _click1 = (e) =>{
+    this.setState({value:[]});
+  };
+
   render(){
     return (
       <div className="hello-react-number-keyboard">
-        <ReactNumberKeyboard onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
+        <button onClick={this._click1}>Clear Value</button>
+        <ReactNumberKeyboard value={this.state.value} onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
       </div>
     );
   }

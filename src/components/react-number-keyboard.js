@@ -8,6 +8,7 @@ export default class extends PureComponent{
   static propTypes = {
     className:PropTypes.string,
     items:PropTypes.array,
+    value:PropTypes.array,
     onItemClick:PropTypes.func,
     onChange:PropTypes.func
   };
@@ -15,23 +16,32 @@ export default class extends PureComponent{
   static defaultProps = {
     onItemClick:noop,
     onChange:noop,
+    value:[],
     items
   };
 
   constructor(props){
   	super(props);
   	this.state = {
-      data:[]
+      value:props.value
     };
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.value !== this.props.value) {
+      this.setState(nextProps,()=>{
+        this.props.onChange({target:{value:nextProps.value}});
+      });
+    }
   }
 
   _onItemClick(inItem){
     const {onItemClick,onChange} = this.props;
-    let data = this.state.data;
-    inItem.action == 'delete' ? data.pop() : data.push(inItem);
-    this.setState({data});
-    onItemClick({item:inItem,data});
-    onChange({ target:{ value:data } });
+    let value = this.state.value;
+    inItem.action == 'delete' ? value.pop() : value.push(inItem);
+    this.setState({value});
+    onItemClick({item:inItem,value});
+    onChange({ target:{ value } });
   }
 
   render(){
