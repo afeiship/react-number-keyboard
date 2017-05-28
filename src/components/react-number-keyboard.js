@@ -1,8 +1,10 @@
 import './style.scss';
-import React,{PureComponent,PropTypes} from 'react';
+
+import React,{PropTypes, PureComponent} from 'react';
+
 import classNames from 'classnames';
+import {generator} from './const';
 import noop from 'noop';
-import {items} from './const';
 
 export default class extends PureComponent{
   static propTypes = {
@@ -17,7 +19,7 @@ export default class extends PureComponent{
     onItemClick:noop,
     onChange:noop,
     value:[],
-    items
+    items:generator('00')
   };
 
   constructor(props){

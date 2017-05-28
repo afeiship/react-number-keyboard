@@ -1,6 +1,6 @@
 import './dev.scss';
-import ReactNumberKeyboard from './main';
 
+import ReactNumberKeyboard,{generator} from './main';
 
 class App extends React.Component{
   state = {
@@ -37,6 +37,8 @@ class App extends React.Component{
       <div className="hello-react-number-keyboard">
         <button onClick={this._click1}>Clear Value</button>
         <ReactNumberKeyboard value={this.state.value} onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
+        <ReactNumberKeyboard items={generator('X')} value={this.state.value} onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
+        <ReactNumberKeyboard items={generator('...')} value={this.state.value} onChange={this._change} onItemClick={this.keyItemClick.bind(this)} />
       </div>
     );
   }
