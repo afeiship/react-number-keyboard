@@ -1,44 +1,55 @@
 import backspaceImg from './backspace.png';
-export const generator = (inKey) => {
+export const generator = (inKey, inIgnore) => {
   return [
     {
       content: '1',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '2',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '3',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '4',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '5',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '6',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '7',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '8',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: '9',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
       content: inKey,
       action: 'value',
-      theme: 'gray'
+      theme: 'gray',
+      ignore: inIgnore
     }, {
       content: '0',
-      action: 'value'
+      action: 'value',
+      ignore:false
     }, {
-      content: `<img src=${backspaceImg} />`,
+      content: ``,
       action: 'delete',
-      theme: 'gray'
+      ignore:false
     }
   ];
 };

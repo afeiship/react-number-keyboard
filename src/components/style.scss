@@ -23,14 +23,8 @@
         border:1px solid #b3b3b3;
         border-width: 0 1px 1px 0;
         user-select:none;
-
-        >img{
-          position: absolute;
-          width:1em;
-          left:50%;
-          top:50%;
-          transform: translate(-50%,-50%);
-        }
+        -webkit-user-select:none;
+        -webkit-touch-callout: none;
 
         &:active{
           background: lighten(#D1D5DA,10%);
@@ -46,6 +40,15 @@
             background: darken(#D1D5DA,10%);
           }
         }
+
+        &[data-action=delete]{
+          background: #fff url(./backspace.png) no-repeat center center;
+          background-size: 1em;
+          &:active{
+            background-color: darken(#D1D5DA,10%);
+          }
+        }
+
       }
     }
   }
