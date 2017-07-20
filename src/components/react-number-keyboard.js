@@ -87,7 +87,7 @@ export default class extends PureComponent{
       }
     }
 
-    this.setState({ value });
+    // this.setState({ value });
     onItemClick({item,value});
     onChange({ target:{ value } });
   }
