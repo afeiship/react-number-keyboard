@@ -100,9 +100,10 @@ export default class extends PureComponent{
             {this.props.items.map((item,index) => {
               return (
                 <button
-                data-action={item.action}
-                data-ignore={item.ignore}
-                onTouchStart={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></button>
+                  data-action={item.action}
+                  data-ignore={item.ignore}
+                  disabled={item.ignore}
+                  onTouchStart={this._onItemClick.bind(this,item)} data-theme={item.theme ? item.theme : null} className="cell" key={index} dangerouslySetInnerHTML={{__html: item.content}}></button>
               );
             })}
           </div>

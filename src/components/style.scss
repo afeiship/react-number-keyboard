@@ -34,6 +34,11 @@
           outline:none;
         }
 
+        &[disabled]{
+          // react will trigger touchstart event when button:disabled
+          pointer-events: none;
+        }
+
         &[data-theme=gray]{
           background: #D1D5DA;
           &:active{
