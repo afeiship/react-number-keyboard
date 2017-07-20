@@ -51,6 +51,8 @@ class App extends React.Component{
 }
 ```
 
+## todos:
+- [ ] remove inner string compabilty
 
 ## resource:
 + http://www.cnblogs.com/Kummy/p/4966937.html

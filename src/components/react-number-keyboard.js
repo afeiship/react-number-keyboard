@@ -53,9 +53,7 @@ export default class extends PureComponent{
   componentWillReceiveProps(nextProps, nextContext) {
     if (nextProps.value !== this.state.value) {
       this.initialState(nextProps);
-      this.setState(this.state,()=>{
-        this.props.onChange({ target:{ value:nextProps.value }});
-      });
+      this.setState(this.state);
     }
   }
 
@@ -87,8 +85,7 @@ export default class extends PureComponent{
       }
     }
 
-    // this.setState({ value });
-    onItemClick({item,value});
+    onItemClick({ item,value });
     onChange({ target:{ value } });
   }
 
